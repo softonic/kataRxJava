@@ -1,0 +1,16 @@
+group 'com.softonic'
+version '1.0'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'io.reactivex:rxjava:1.1.5'
+    testCompile 'junit:junit:4.11'
+
+}
