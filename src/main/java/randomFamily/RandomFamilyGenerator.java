@@ -15,12 +15,12 @@ public class RandomFamilyGenerator {
   }
 
   public FamilyEntity createFamily(int sons, int daughters) {
-    Observable<UserEntity> obsFather = getSingleUserByGender("male");
-    Observable<UserEntity> obsMother = getSingleUserByGender("female");
-    Observable<UserEntity> obsSons = getMultipleUsersByGender("male", sons);
-    Observable<UserEntity> obsDaughters = getMultipleUsersByGender("female", daughters);
+    Observable<UserEntity> obsFather = getSingleUserByGender(UserEntity.GENDER_MALE);
+    Observable<UserEntity> obsMother = getSingleUserByGender(UserEntity.GENDER_FEMALE);
+    Observable<UserEntity> obsSons = getMultipleUsersByGender(UserEntity.GENDER_MALE, sons);
+    Observable<UserEntity> obsDaughters = getMultipleUsersByGender(UserEntity.GENDER_FEMALE, daughters);
 
-    return Observable
+    FamilyEntity familyEntity = Observable
         .zip(obsFather, obsMother, obsSons.toList(), obsDaughters.toList(), new Func4<UserEntity, UserEntity, List<UserEntity>, List<UserEntity>, FamilyEntity>() {
           @Override
           public FamilyEntity call(UserEntity fatherEntity, UserEntity motherEntity, List<UserEntity> sonEntities, List<UserEntity> daughterEntities) {
@@ -36,6 +36,8 @@ public class RandomFamilyGenerator {
         })
         .toBlocking()
         .first();
+    System.out.println(familyEntity.toString());
+    return familyEntity;
   }
 
   private Observable<UserEntity> getSingleUserByGender(String gender) {
