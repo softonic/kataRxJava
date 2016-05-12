@@ -34,7 +34,6 @@ public class Consensus {
             journal.write("Resolution: " + aBoolean);
           }
         })
-
         .toBlocking()
         .first();
   }
