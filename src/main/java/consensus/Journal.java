@@ -1,5 +1,8 @@
 package consensus;
 
+import rx.Observable;
+import rx.functions.Func1;
+
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,7 +20,16 @@ class Journal {
   }
 
   List<String> getJournalMessages() {
-    //TODO: Use RxJava to create a right implementation for this method.
-    return null;
+    return Observable
+        .from(journalEntries)
+        .map(new Func1<JournalEntry, String>() {
+          @Override
+          public String call(JournalEntry journalEntry) {
+            return journalEntry.getMessage();
+          }
+        })
+        .toList()
+        .toBlocking()
+        .first();
   }
 }

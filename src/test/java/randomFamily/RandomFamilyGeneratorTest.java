@@ -1,4 +1,4 @@
-package randumFamily;
+package randomFamily;
 
 import org.junit.Test;
 

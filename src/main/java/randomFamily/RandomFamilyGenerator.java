@@ -1,4 +1,4 @@
-package randumFamily;
+package randomFamily;
 
 public class RandomFamilyGenerator {
   private final RandomUserApi randomUserApi;
