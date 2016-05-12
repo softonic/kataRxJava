@@ -9,6 +9,10 @@ public class UserEntity {
   @SerializedName("name")
   private NameEntity name;
 
+  public UserEntity() {
+    super();
+  }
+
   public String getGender() {
     return gender;
   }

@@ -5,12 +5,12 @@ import retrofit2.http.Query;
 import rx.Observable;
 
 interface RandomUserApi {
-  @GET()
-  Observable<UserEntity> getUser();
+  @GET("/")
+  Observable<RequestEntity> getUser();
 
-  @GET()
-  Observable<UserEntity> getUserByGender(@Query("gender") String gender);
+  @GET("/")
+  Observable<RequestEntity> getUserByGender(@Query("gender") String gender);
 
-  @GET()
-  Observable<UserEntity> getUserByGender(@Query("gender") String gender, @Query("results") int results);
+  @GET("/")
+  Observable<RequestEntity> getUserByGender(@Query("gender") String gender, @Query("results") int results);
 }
