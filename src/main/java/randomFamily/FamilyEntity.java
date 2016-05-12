@@ -30,4 +30,14 @@ public class FamilyEntity {
   public List<UserEntity> getDaughters() {
     return daughters;
   }
+
+  @Override
+  public String toString() {
+    return "FamilyEntity{" +
+        "father=" + father +
+        ", mother=" + mother +
+        ", sons=" + sons +
+        ", daughters=" + daughters +
+        '}';
+  }
 }

@@ -35,4 +35,9 @@ public class NameEntity {
   public void setLast(String last) {
     this.last = last;
   }
+
+  @Override
+  public String toString() {
+    return title + " " + first + " " + last;
+  }
 }
