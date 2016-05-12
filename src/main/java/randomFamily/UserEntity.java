@@ -1,4 +1,4 @@
-package randumFamily;
+package randomFamily;
 
 import com.google.gson.annotations.SerializedName;
 

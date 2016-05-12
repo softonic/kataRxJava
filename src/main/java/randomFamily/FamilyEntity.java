@@ -1,4 +1,4 @@
-package randumFamily;
+package randomFamily;
 
 import java.util.List;
 
