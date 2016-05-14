@@ -3,6 +3,8 @@ package consensus;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import rx.Observable;
+import rx.functions.Func1;
 
 class Journal {
   private final List<JournalEntry> journalEntries = new LinkedList<>();
@@ -17,7 +19,17 @@ class Journal {
   }
 
   List<String> getJournalMessages() {
-    //TODO: Use RxJava to create a right implementation for this method.
-    return null;
+    Observable<String> entryObservable =
+        Observable.from(journalEntries).map(new Func1<JournalEntry, String>() {
+          @Override public String call(JournalEntry journalEntry) {
+            return journalEntry.getMessage();
+          }
+        });
+
+    if (!entryObservable.isEmpty().toBlocking().first()) {
+      return entryObservable.toList().toBlocking().first();
+    }
+
+    return entryObservable.toList().toBlocking().first();
   }
 }
